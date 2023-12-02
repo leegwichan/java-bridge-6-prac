@@ -12,17 +12,24 @@ public class InputView {
 
     private static final String UP = "U";
     private static final String DOWN = "D";
-    private static final Map<String, Space> FORMAT_TO_SPACE = Map.of("U", Space.UP, "D", Space.DOWN);
+    private static final Map<String, Space> FORMAT_TO_SPACE = Map.of(UP, Space.UP, DOWN, Space.DOWN);
+    private static final String RETRY = "R";
+    private static final String QUIT = "Q";
+    private static final Map<String, GameCommand> FORMAT_TO_COMMAND
+            = Map.of(RETRY, GameCommand.RETRY, QUIT, GameCommand.QUIT);
+    private static final String BLANK = System.lineSeparator();
 
     private static final String INPUT_BRIDGE_REQUEST = "다리의 길이를 입력해주세요.";
     private static final String INPUT_SPACE_REQUEST
             = "이동할 칸을 선택해주세요. (위: %s, 아래: %s)".formatted(UP, DOWN);
+    private static final String INPUT_COMMAND_REQUEST
+            = "게임을 다시 시도할지 여부를 입력해주세요. (재시도: R, 종료: Q)"
 
     /**
      * 다리의 길이를 입력받는다.
      */
     public int readBridgeSize() {
-        println(INPUT_BRIDGE_REQUEST);
+        printTitle(INPUT_BRIDGE_REQUEST);
         return readInt();
     }
 
@@ -42,7 +49,7 @@ public class InputView {
      * 사용자가 이동할 칸을 입력받는다.
      */
     public Space readMoving() {
-        println(INPUT_SPACE_REQUEST);
+        printTitle(INPUT_SPACE_REQUEST);
         return readSpace();
     }
 
@@ -59,11 +66,21 @@ public class InputView {
      * 사용자가 게임을 다시 시도할지 종료할지 여부를 입력받는다.
      */
     public GameCommand readGameCommand() {
-        return null;
+        printTitle(INPUT_COMMAND_REQUEST);
+        return readCommand();
     }
 
-    private void println(String message) {
-        System.out.println(message);
+    private GameCommand readCommand() {
+        String message = read().trim();
+
+        if (FORMAT_TO_COMMAND.containsKey(message)) {
+            return FORMAT_TO_COMMAND.get(message);
+        }
+        throw new IllegalArgumentException("재시도 여부는 %s 또는 %s만 입력해야 합니다".formatted(RETRY, QUIT));
+    }
+
+    private void printTitle(String title) {
+        System.out.println(BLANK + title);
     }
 
     private String read() {
