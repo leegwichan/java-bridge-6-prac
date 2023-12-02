@@ -47,8 +47,10 @@ public class BridgeGameController {
                 }
                 gameResult = bridgeGame.retry(gameResult);// 게임을 다시 시도
             }
+            if (moveResult.equals(GAME_QUIT.getMessage())) {
+                outputView.printResult(gameResult);
+                break;
+            }
         }
-
-
     }
 }
