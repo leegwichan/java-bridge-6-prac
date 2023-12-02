@@ -54,6 +54,7 @@ public class BridgeGame {
         return false;
     }
 
+    // @todo: refactor
     public String getGameResult() {
 
         StringBuilder topRow = new StringBuilder("[  ]");

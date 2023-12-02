@@ -13,6 +13,9 @@ import java.util.List;
 import java.util.function.Supplier;
 
 public class GameController {
+    private static final String SUCCESS = "성공";
+    private static final String FAIL = "실패";
+
     public void run() {
         int bridgeSize = wrapByLoop(InputView::readBridgeSize);
         BridgeGame bridgeGame = new BridgeGame(initBridge(bridgeSize), MoveHistory.from(new ArrayList<>()));
@@ -20,12 +23,13 @@ public class GameController {
 
         resultDto = playGame(bridgeGame, resultDto);
         if (resultDto == null) {
-            resultDto = new ResultDto(bridgeGame.getGameResult(), "성공", bridgeGame.getTrialCount());
+            resultDto = new ResultDto(bridgeGame.getGameResult(), SUCCESS, bridgeGame.getTrialCount());
         }
 
         OutputView.printResult(resultDto);
     }
 
+    // @todo: refactor
     private ResultDto playGame(BridgeGame bridgeGame, ResultDto resultDto) {
         while (!bridgeGame.isEnd()) {
             String movePosition = wrapByLoop(InputView::readMoving);
@@ -35,11 +39,10 @@ public class GameController {
 
             if (!isMove) {
                 String command = wrapByLoop(InputView::readGameCommand);
-                if (command.equals("R")) {
-                    bridgeGame.retry(command);
-                }
-                if (command.equals("Q")) {
-                    resultDto = new ResultDto(gameResult, "실패", bridgeGame.getTrialCount());
+                boolean shouldRetry = bridgeGame.retry(command);
+
+                if (!shouldRetry) {
+                    resultDto = new ResultDto(gameResult, FAIL, bridgeGame.getTrialCount());
                     break;
                 }
             }
