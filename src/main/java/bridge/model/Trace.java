@@ -20,13 +20,13 @@ public class Trace {
 
     private void validate(int maxSize) {
         if (isOutOfRange(maxSize)) {
-            String exceptionMessage = "다리 건넌 정보는 %d 이상 %d 이하이어야 합니다.".formatted(MIN_SIZE, MAX_SIZE);
+            String exceptionMessage = "다리 건넌 정보는 %d 이상 %d 이하이어야 합니다".formatted(MIN_SIZE, MAX_SIZE);
             throw new IllegalArgumentException(exceptionMessage);
         }
     }
 
     private boolean isOutOfRange(int maxSize) {
-        return MIN_SIZE < maxSize && MAX_SIZE > maxSize;
+        return maxSize < MIN_SIZE || maxSize > MAX_SIZE;
     }
 
     public void add(Space space) {
