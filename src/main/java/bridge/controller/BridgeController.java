@@ -1,6 +1,8 @@
 package bridge.controller;
 
 import bridge.dto.BridgeDto;
+import bridge.dto.GameCommand;
+import bridge.dto.Space;
 import bridge.model.BridgeGame;
 import bridge.view.InputView;
 import bridge.view.OutputView;
@@ -19,9 +21,8 @@ public class BridgeController {
 
         do {
             count++;
-            bridgeGame.retry();
             playGame();
-        } while (!bridgeGame.isReachEndCorrectly() && inputView.readGameCommand().isRetry());
+        } while (isRetryGame());
 
         outputView.printResult(BridgeDto.from(bridgeGame), count);
     }
@@ -31,20 +32,30 @@ public class BridgeController {
         return BridgeGame.from(size);
     }
 
+    private void playGame() {
+        bridgeGame.retry();
+        while (bridgeGame.isMoved()) {
+            Space space = readRepeatedlyUntilNoException(inputView::readMoving);
+            bridgeGame.move(space);
+            outputView.printMap(BridgeDto.from(bridgeGame));
+        }
+    }
+
+    private boolean isRetryGame() {
+        if (bridgeGame.isReachEndCorrectly()) {
+            return false;
+        }
+
+        GameCommand command = readRepeatedlyUntilNoException(inputView::readGameCommand);
+        return command.isRetry();
+    }
+
     private <T> T readRepeatedlyUntilNoException(Supplier<T> supplier) {
         try {
             return supplier.get();
         } catch (IllegalArgumentException exception) {
             outputView.printExceptionMessage(exception);
             return readRepeatedlyUntilNoException(supplier);
-        }
-    }
-
-    private void playGame() {
-
-        while (bridgeGame.isMoved()) {
-            bridgeGame.move(inputView.readMoving());
-            outputView.printMap(BridgeDto.from(bridgeGame));
         }
     }
 }
