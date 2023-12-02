@@ -30,7 +30,7 @@ public class BridgeGame {
     }
 
     private void validateState() {
-        if (trace.isReachedEnd(bridge) || !trace.isCorrectRouteAt(bridge)) {
+        if (trace.isReachedEnd(bridge) || isReachWrongRoute()) {
             throw new IllegalStateException("더 이상 다리를 건널 수 없습니다");
         }
     }
@@ -40,5 +40,9 @@ public class BridgeGame {
      */
     public void retry() {
         trace = new Trace(bridge.size());
+    }
+
+    public boolean isReachWrongRoute() {
+        return !trace.isCorrectRouteAt(bridge);
     }
 }
