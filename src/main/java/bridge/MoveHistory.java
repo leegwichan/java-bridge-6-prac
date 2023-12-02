@@ -25,4 +25,8 @@ public class MoveHistory {
     public boolean isEqual(int index, String value) {
         return history.get(index).equals(value);
     }
+
+    public void save(String value) {
+        history.add(value);
+    }
 }

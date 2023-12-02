@@ -28,6 +28,13 @@ public class BridgeGame {
      * 이동을 위해 필요한 메서드의 반환 타입(return type), 인자(parameter)는 자유롭게 추가하거나 변경할 수 있다.
      */
     public boolean move(String input) {
+        moveHistory.save(input);
+
+        if (input.equals(bridge.get(round))) {
+            round++;
+            return true;
+        }
+
         return false;
     }
 
@@ -40,6 +47,7 @@ public class BridgeGame {
         if (input.equals(RETRY)) {
             moveHistory.reset();
             increaseTrialCount();
+            resetRound();
             return true;
         }
 
@@ -79,6 +87,10 @@ public class BridgeGame {
 
     private void increaseTrialCount() {
         trialCount++;
+    }
+
+    private void resetRound() {
+        round = 0;
     }
 
     private String compareInputWithBridge(int index) {
