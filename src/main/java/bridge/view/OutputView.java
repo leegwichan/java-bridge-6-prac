@@ -43,7 +43,7 @@ public class OutputView {
         printResult
                 .append(GAME_RESULT.getMessage())
                 .append("\n")
-                .append("[ O | O | O ]")
+                .append("[ O |   | O ]")
                 .append("\n")
                 .append("[   | O |   ]")
                 .append("\n")

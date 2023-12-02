@@ -28,11 +28,11 @@ public class InputView {
                 String bridgeSize = Console.readLine();
 
                 validateBridgeSize(bridgeSize);
+
                 return Integer.parseInt(bridgeSize);
             }
-
         } catch (IllegalArgumentException e) {
-            e.getMessage();
+            System.out.println(e.getMessage());
         }
 
         return 0;
@@ -79,10 +79,10 @@ public class InputView {
                 moveCount++;
             }
         } catch (IllegalArgumentException e) {
-            e.getMessage();
+            System.out.println(e.getMessage());
         }
 
-        return Room.ROOM_EMPTY.getMessage();
+        return Game.GAME_QUIT.getMessage();
     }
 
     public void validateMove(String move) {
@@ -104,10 +104,9 @@ public class InputView {
                 if (gameCommand.equals(Game.GAME_RETRY.getMessage())) {
                     return Game.GAME_RETRY.getMessage();
                 }
-                return Game.GAME_QUIT.getMessage();
             }
         } catch (IllegalArgumentException e) {
-            e.getMessage();
+            System.out.println(e.getMessage());
         }
 
         return Game.GAME_QUIT.getMessage();
