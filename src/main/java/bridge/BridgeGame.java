@@ -12,14 +12,14 @@ public class BridgeGame {
 
     private final List<String> bridge;
     private int round;
-    private UserInputs userInputs;
+    private MoveHistory moveHistory;
     private int trialCount;
 
-    public BridgeGame(List<String> bridge, UserInputs userInputs) {
+    public BridgeGame(List<String> bridge, MoveHistory moveHistory) {
         this.bridge = bridge;
         this.round = 0;
         this.trialCount = 1;
-        this.userInputs = userInputs;
+        this.moveHistory = moveHistory;
     }
 
     /**
@@ -27,8 +27,8 @@ public class BridgeGame {
      * <p>
      * 이동을 위해 필요한 메서드의 반환 타입(return type), 인자(parameter)는 자유롭게 추가하거나 변경할 수 있다.
      */
-    public void move() {
-
+    public boolean move(String input) {
+        return false;
     }
 
     /**
@@ -38,7 +38,7 @@ public class BridgeGame {
      */
     public boolean retry(String input) {
         if (input.equals(RETRY)) {
-            userInputs.reset();
+            moveHistory.reset();
             increaseTrialCount();
             return true;
         }
@@ -51,9 +51,9 @@ public class BridgeGame {
         StringBuilder topRow = new StringBuilder("[  ]");
         StringBuilder bottomRow = new StringBuilder("[  ]");
 
-        for (int i = 0; i < userInputs.getSize(); i++) {
+        for (int i = 0; i < moveHistory.getSize(); i++) {
             //윗 라인
-            if (userInputs.isEqual(i, "U")) {
+            if (moveHistory.isEqual(i, "U")) {
                 int topOffset = topRow.toString().length() - 2;
                 topRow.insert(topOffset, getValueByPosition(i));
 
@@ -82,7 +82,7 @@ public class BridgeGame {
     }
 
     private String compareInputWithBridge(int index) {
-        if (userInputs.isEqual(index, bridge.get(index))) {
+        if (moveHistory.isEqual(index, bridge.get(index))) {
             return SAME;
         }
 

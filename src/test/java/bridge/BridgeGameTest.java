@@ -11,11 +11,11 @@ class BridgeGameTest {
     void BridgeGameTest() {
         // given
         BridgeGame bridgeGame = new BridgeGame(List.of("U", "D", "D", "D"),
-                UserInputs.from(List.of("U", "D", "D", "D")));
+                MoveHistory.from(List.of("U", "D", "D", "D")));
 
         // when
         String gameResult = bridgeGame.getGameResult();
-        
+
         // then
         Assertions.assertThat(gameResult).contains("[ O |   |   |   ]\n[   | O | O | O ]");
     }
