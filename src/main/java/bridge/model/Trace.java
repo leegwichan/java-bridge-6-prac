@@ -3,6 +3,7 @@ package bridge.model;
 import bridge.dto.Space;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class Trace {
 
@@ -37,6 +38,11 @@ public class Trace {
         if (isSpacesFull()) {
             throw new IllegalStateException("다리 건넌 정보를 더 이상 추가할 수 없습니다");
         }
+    }
+
+    public boolean isCorrectRouteAt(Bridge bridge) {
+        return IntStream.range(0, spaces.size())
+                .allMatch(index -> bridge.isCorrectSpace(index, spaces.get(index)));
     }
 
     private boolean isSpacesFull() {
