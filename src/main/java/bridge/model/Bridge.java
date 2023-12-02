@@ -34,6 +34,25 @@ public class Bridge {
         throw new IllegalArgumentException("해당 형식에 해당하는 칸이 없습니다");
     }
 
+    public boolean isCorrectSpace(int index, Space space) {
+        validate(index);
+        return spaces.get(index) == space;
+    }
+
+    private void validate(int index) {
+        if (isOutOfRange(index)) {
+            throw new IllegalArgumentException("");
+        }
+    }
+
+    private boolean isOutOfRange(int index) {
+        return index < 0 || index >= size();
+    }
+
+    public int size() {
+        return spaces.size();
+    }
+
     public List<Space> getSpaces() {
         return spaces;
     }
