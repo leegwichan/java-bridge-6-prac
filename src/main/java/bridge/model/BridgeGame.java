@@ -1,5 +1,6 @@
 package bridge.model;
 
+import bridge.dto.Space;
 import java.util.Objects;
 
 public class BridgeGame {
@@ -23,8 +24,15 @@ public class BridgeGame {
      * <p>
      * 이동을 위해 필요한 메서드의 반환 타입(return type), 인자(parameter)는 자유롭게 추가하거나 변경할 수 있다.
      */
-    public void move() {
+    public void move(Space space) {
+        validateState();
+        trace.add(space);
+    }
 
+    private void validateState() {
+        if (trace.isReachedEnd(bridge) || !trace.isCorrectRouteAt(bridge)) {
+            throw new IllegalStateException("더 이상 다리를 건널 수 없습니다");
+        }
     }
 
     /**
