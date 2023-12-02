@@ -18,7 +18,6 @@ public class BridgeMaker {
     private static final int DOWN_NUMBER = 0;
     private static final Map<Integer, String> NUMBER_TO_STRING = Map.of(UP_NUMBER, UP, DOWN_NUMBER, DOWN);
 
-
     private final BridgeNumberGenerator bridgeNumberGenerator;
 
     public BridgeMaker(BridgeNumberGenerator bridgeNumberGenerator) {
