@@ -23,7 +23,7 @@ public class OutputView {
 
     private static final String START_GAME = "다리 건너기 게임을 시작합니다.";
     private static final String GAME_RESULT_TITLE = "최종 게임 결과";
-    private static final String GAME_RESULT_SUCCESS_FORMAT = NEW_LINE + "게임 성공 여부: %s";
+    private static final String GAME_RESULT_SUCCESS_FORMAT = "게임 성공 여부: %s";
     private static final Map<Boolean, String> BOOLEAN_TO_FORMAT
             = Map.of(Boolean.TRUE, "성공", Boolean.FALSE, "실패");
     private static final String GAME_RESULT_TRY_FORMAT = "총 시도한 횟수: %d";
@@ -39,7 +39,6 @@ public class OutputView {
     public void printMap(BridgeDto bridgeDto) {
         println(makeBridgeLine(bridgeDto, Space.UP));
         println(makeBridgeLine(bridgeDto, Space.DOWN));
-        printBlankLine();
     }
 
     private String makeBridgeLine(BridgeDto bridgeDto, Space space) {
@@ -64,6 +63,7 @@ public class OutputView {
     public void printResult(BridgeDto bridgeDto, int count) {
         println(GAME_RESULT_TITLE);
         printMap(bridgeDto);
+        printBlankLine();
         println(GAME_RESULT_SUCCESS_FORMAT.formatted(toSuccessString(bridgeDto)));
         println(GAME_RESULT_TRY_FORMAT.formatted(count));
     }
