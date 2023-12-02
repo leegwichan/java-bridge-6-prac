@@ -15,7 +15,7 @@ public class InputView {
     /**
      * 다리의 길이를 입력받는다.
      */
-    public int readBridgeSize() {
+    public static int readBridgeSize() {
         print(INPUT_BRIDGE_SIZE);
         String input = read();
         try {
@@ -28,7 +28,7 @@ public class InputView {
     /**
      * 사용자가 이동할 칸을 입력받는다.
      */
-    public String readMoving() {
+    public static String readMoving() {
         print(INPUT_MOVE_POSITION);
         String input = read();
         validateMoveInput(input);
@@ -39,7 +39,7 @@ public class InputView {
     /**
      * 사용자가 게임을 다시 시도할지 종료할지 여부를 입력받는다.
      */
-    public String readGameCommand() {
+    public static String readGameCommand() {
         print(INPUT_RESET_OR_QUIT);
         String input = read();
         validateGameCommand(input);
@@ -47,22 +47,22 @@ public class InputView {
         return input;
     }
 
-    private String read() {
+    private static String read() {
         return Console.readLine().trim();
     }
 
-    private void print(String message) {
+    private static void print(String message) {
         System.out.println(message);
     }
 
-    private void validateMoveInput(String input) {
+    private static void validateMoveInput(String input) {
         if (input.equals("U") || input.equals("D")) {
             return;
         }
         throw new InputException(ErrorMessage.WRONG_MOVE_INPUT);
     }
 
-    private void validateGameCommand(String input) {
+    private static void validateGameCommand(String input) {
         if (input.equals("R") || input.equals("Q")) {
             return;
         }

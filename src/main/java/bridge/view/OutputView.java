@@ -15,7 +15,7 @@ public class OutputView {
      * <p>
      * 출력을 위해 필요한 메서드의 인자(parameter)는 자유롭게 추가하거나 변경할 수 있다.
      */
-    public void printMap(String data) {
+    public static void printMap(String data) {
         print(data);
     }
 
@@ -24,7 +24,7 @@ public class OutputView {
      * <p>
      * 출력을 위해 필요한 메서드의 인자(parameter)는 자유롭게 추가하거나 변경할 수 있다.
      */
-    public void printResult(ResultDto resultDto) {
+    public static void printResult(ResultDto resultDto) {
         print(FINAL_GAME_RESULT);
         print(resultDto.result());
         print("");
@@ -32,7 +32,7 @@ public class OutputView {
         print(TOTAL_TRIAL_COUNT + resultDto.trialCount());
     }
 
-    private void print(String data) {
+    private static void print(String data) {
         System.out.println(data);
     }
 }
