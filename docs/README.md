@@ -15,6 +15,9 @@
     - [] 이동할 칸 검증 - InputView#validateMove()
 - [] 게임 재시작 명령 입력 - InputView#readGameCommand()
     - [] 재시작 명령 검증 - InputView#validateGameCommand()
+- [] 다리 건너기 게임 시작 문구 출력 - OutputView#printHelloBridgeGame()
+- [] 현재까지 이동한 다리의 상태 출력 - OutputView#printMap()
+- [] 게임의 최종 결과를 출력 - OutputView#printResult()
 
 ## 테스트 기능 목록
 
