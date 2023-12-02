@@ -23,7 +23,7 @@ public class InputView {
     private static final String INPUT_SPACE_REQUEST
             = "이동할 칸을 선택해주세요. (위: %s, 아래: %s)".formatted(UP, DOWN);
     private static final String INPUT_COMMAND_REQUEST
-            = "게임을 다시 시도할지 여부를 입력해주세요. (재시도: R, 종료: Q)"
+            = "게임을 다시 시도할지 여부를 입력해주세요. (재시도: R, 종료: Q)";
 
     /**
      * 다리의 길이를 입력받는다.
