@@ -7,6 +7,8 @@ import java.util.List;
  */
 public class BridgeGame {
     private static final String RETRY = "R";
+    private static final String SAME = "O";
+    private static final String DIFFERENT = "X";
 
     private final List<String> bridge;
     private int round;
@@ -44,11 +46,61 @@ public class BridgeGame {
         return false;
     }
 
+    public String getGameResult() {
+
+        StringBuilder topRow = new StringBuilder("[  ]");
+        StringBuilder bottomRow = new StringBuilder("[  ]");
+
+        for (int i = 0; i < userInputs.getSize(); i++) {
+            //윗 라인
+            if (userInputs.isEqual(i, "U")) {
+                int topOffset = topRow.toString().length() - 2;
+                topRow.insert(topOffset, getValueByPosition(i));
+
+                int bottomOffset = bottomRow.toString().length() - 2;
+                bottomRow.insert(bottomOffset, getGapByPosition(i));
+                continue;
+            }
+
+            //아랫 라인
+            int bottomOffset = bottomRow.toString().length() - 2;
+            bottomRow.insert(bottomOffset, getValueByPosition(i));
+
+            int topOffset = topRow.toString().length() - 2;
+            topRow.insert(topOffset, getGapByPosition(i));
+        }
+
+        return topRow.append("\n").append(bottomRow).toString();
+    }
+
     public int getTrialCount() {
         return trialCount;
     }
 
     private void increaseTrialCount() {
         trialCount++;
+    }
+
+    private String compareInputWithBridge(int index) {
+        if (userInputs.isEqual(index, bridge.get(index))) {
+            return SAME;
+        }
+
+        return DIFFERENT;
+    }
+
+    private String getValueByPosition(int position) {
+        String value = compareInputWithBridge(position);
+        if (position == 0) {
+            return value;
+        }
+        return String.format(" | %s", value);
+    }
+
+    private String getGapByPosition(int position) {
+        if (position == 0) {
+            return " ";
+        }
+        return " |  ";
     }
 }

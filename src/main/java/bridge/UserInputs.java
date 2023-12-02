@@ -17,4 +17,12 @@ public class UserInputs {
     public void reset() {
         this.userInputs = new ArrayList<>();
     }
+
+    public int getSize() {
+        return userInputs.size();
+    }
+
+    public boolean isEqual(int index, String value) {
+        return userInputs.get(index).equals(value);
+    }
 }
