@@ -1,6 +1,7 @@
 package bridge.model;
 
 import bridge.dto.Space;
+import java.util.List;
 import java.util.Objects;
 
 public class BridgeGame {
@@ -48,5 +49,13 @@ public class BridgeGame {
 
     public boolean isReachEndCorrectly() {
         return trace.isReachedEnd(bridge) && trace.isCorrectRouteAt(bridge);
+    }
+
+    public List<Space> getBridge() {
+        return bridge.getSpaces();
+    }
+
+    public List<Space> getTrace() {
+        return trace.getSpaces();
     }
 }
