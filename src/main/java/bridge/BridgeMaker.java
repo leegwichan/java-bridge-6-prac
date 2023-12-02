@@ -25,17 +25,17 @@ public class BridgeMaker {
     public List<String> makeBridge(int size) {
         List<String> rooms = new ArrayList<>();
         while (size != BRIDGE_SIZE_ZERO.getMessage()) {
-            rooms.add(generateRoom(rooms));
+            rooms.add(generateRoom());
             size--;
         }
         return rooms;
     }
 
-    private String generateRoom(List<String> rooms) {
+    private String generateRoom() {
         if (generateNumber() == BRIDGE_SIZE_ZERO.getMessage()) {
-            return ROOM_UP.getMessage();
+            return ROOM_DOWN.getMessage();
         }
-        return ROOM_DOWN.getMessage();
+        return ROOM_UP.getMessage();
     }
 
     private int generateNumber() {
