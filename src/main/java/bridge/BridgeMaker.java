@@ -32,7 +32,7 @@ public class BridgeMaker {
     }
 
     private String generateRoom(List<String> rooms) {
-        if (generateNumber() == 0) {
+        if (generateNumber() == BRIDGE_SIZE_ZERO.getMessage()) {
             return ROOM_UP.getMessage();
         }
         return ROOM_DOWN.getMessage();
