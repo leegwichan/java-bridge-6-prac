@@ -12,7 +12,6 @@ import java.util.stream.IntStream;
  */
 public class OutputView {
 
-    private static final String NEW_LINE = System.lineSeparator();
     private static final String BRIDGE_PREFIX = "[ ";
     private static final String BRIDGE_DELIMITER = " | ";
     private static final String BRIDGE_SUFFIX = " ]";
