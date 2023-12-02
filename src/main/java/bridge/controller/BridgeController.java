@@ -19,6 +19,7 @@ public class BridgeController {
 
         do {
             count++;
+            bridgeGame.retry();
             playGame();
         } while (!bridgeGame.isReachEndCorrectly() && inputView.readGameCommand().isRetry());
 
