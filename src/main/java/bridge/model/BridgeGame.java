@@ -51,6 +51,10 @@ public class BridgeGame {
         return trace.isReachedEnd(bridge) && trace.isCorrectRouteAt(bridge);
     }
 
+    public boolean isMoved() {
+        return !isReachWrongRoute() && !trace.isReachedEnd(bridge);
+    }
+
     public List<Space> getBridge() {
         return bridge.getSpaces();
     }
