@@ -71,10 +71,8 @@ public class InputView {
                 String moveResult = bridgeGame.move(currentBridge, move);
 
                 if (!moveResult.equals(Room.ROOM_EXIST.getMessage())) {
-                    moveCount = 0;
                     return Room.ROOM_EMPTY.getMessage();
                 }
-                System.out.println("size: " + size);
                 size--;
                 moveCount++;
             }
