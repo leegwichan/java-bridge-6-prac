@@ -27,4 +27,19 @@ public class Trace {
     private boolean isOutOfRange(int maxSize) {
         return MIN_SIZE < maxSize && MAX_SIZE > maxSize;
     }
+
+    public void add(Space space) {
+        validateAddingMoreSpaces();
+        spaces.add(space);
+    }
+
+    private void validateAddingMoreSpaces() {
+        if (isSpacesFull()) {
+            throw new IllegalStateException("다리 건넌 정보를 더 이상 추가할 수 없습니다");
+        }
+    }
+
+    private boolean isSpacesFull() {
+        return spaces.size() >= maxSize;
+    }
 }
