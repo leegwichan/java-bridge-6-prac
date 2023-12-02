@@ -41,7 +41,7 @@ public class Bridge {
 
     private void validate(int index) {
         if (isOutOfRange(index)) {
-            throw new IllegalArgumentException("");
+            throw new IllegalArgumentException("다리의 범위를 벗어났습니다");
         }
     }
 
