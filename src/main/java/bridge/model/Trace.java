@@ -56,4 +56,8 @@ public class Trace {
     private boolean isSpacesFull() {
         return spaces.size() >= maxSize;
     }
+
+    public List<Space> getSpaces() {
+        return List.copyOf(spaces);
+    }
 }
