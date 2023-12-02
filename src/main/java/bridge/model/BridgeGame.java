@@ -45,4 +45,8 @@ public class BridgeGame {
     public boolean isReachWrongRoute() {
         return !trace.isCorrectRouteAt(bridge);
     }
+
+    public boolean isReachEndCorrectly() {
+        return trace.isReachedEnd(bridge) && trace.isCorrectRouteAt(bridge);
+    }
 }
