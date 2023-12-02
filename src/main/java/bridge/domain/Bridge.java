@@ -4,7 +4,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class Bridge {
-    private List<String> bridgeParts;
+    private final List<String> bridgeParts;
 
     public Bridge(List<String> bridgeParts) {
         this.bridgeParts = bridgeParts;
@@ -16,5 +16,9 @@ public class Bridge {
 
     public List<String> getBridge() {
         return Collections.unmodifiableList(bridgeParts);
+    }
+
+    public int getBridgeSize() {
+        return bridgeParts.size();
     }
 }
