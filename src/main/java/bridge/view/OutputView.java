@@ -5,6 +5,8 @@ import static bridge.constant.Game.GAME_RESULT;
 import static bridge.constant.Game.GAME_TOTAL_TRY;
 import static bridge.constant.Game.GAME_WHETHER_SUCCESS;
 
+import bridge.model.Result;
+
 /**
  * 사용자에게 게임 진행 상황과 결과를 출력하는 역할을 한다.
  */
@@ -26,6 +28,8 @@ public class OutputView {
         printResult
                 .append("{여기에 현재까지 이동한 다리 상태 출력}")
                 .append("\n");
+
+        System.out.println(printResult);
     }
 
     /**
@@ -33,18 +37,22 @@ public class OutputView {
      * <p>
      * 출력을 위해 필요한 메서드의 인자(parameter)는 자유롭게 추가하거나 변경할 수 있다.
      */
-    public void printResult() {
+    public void printResult(Result gameResult) {
         printResult = new StringBuilder();
 
         printResult
                 .append(GAME_RESULT.getMessage())
                 .append("\n")
-                .append("{여기에 다리 건너기 결과 출력}")
+                .append("[ O | O | O ]")
+                .append("\n")
+                .append("[   | O |   ]")
                 .append("\n")
                 .append(GAME_WHETHER_SUCCESS.getMessage())
-                .append("{여기에 게임 성공 여부 값 출력}")
+                .append("성공")
                 .append("\n")
                 .append(GAME_TOTAL_TRY.getMessage())
-                .append("{여기에 총 시도한 횟수 값 출력}");
+                .append("1");
+
+        System.out.println(printResult);
     }
 }
