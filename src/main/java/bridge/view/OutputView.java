@@ -7,9 +7,11 @@ import bridge.dto.BridgeDto;
  */
 public class OutputView {
 
+    private static final String START_GAME = "다리 건너기 게임을 시작합니다.";
     private static final String ERROR_FORMAT = "[ERROR] %s%n";
 
     public void printStartGame() {
+        println(START_GAME);
     }
 
     /**
