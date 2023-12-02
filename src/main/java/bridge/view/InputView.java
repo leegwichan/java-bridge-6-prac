@@ -1,4 +1,4 @@
-package bridge;
+package bridge.view;
 
 import static bridge.exception.ExceptionHandler.invalidGameCommand;
 import static bridge.exception.ExceptionHandler.invalidMove;

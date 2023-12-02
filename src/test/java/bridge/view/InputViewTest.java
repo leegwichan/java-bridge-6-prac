@@ -1,4 +1,4 @@
-package bridge;
+package bridge.view;
 
 import static bridge.constant.Exception.EXCEPTION_INVALID_GAME_COMMAND;
 import static bridge.constant.Exception.EXCEPTION_INVALID_MOVE;
