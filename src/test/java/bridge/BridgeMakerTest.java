@@ -44,10 +44,10 @@ class BridgeMakerTest {
 
     static Stream<BridgeDto> makeExampleOfMakeBridge() {
         return Stream.of(
-                new BridgeDto(3, new BridgeMaker(() -> 0), List.of("U", "U", "U")),
-                new BridgeDto(6, new BridgeMaker(() -> 1), List.of("D", "D", "D", "D", "D", "D")),
-                new BridgeDto(10, new BridgeMaker(() -> 1), List.of("D", "D", "D", "D", "D", "D", "D", "D", "D", "D")),
-                new BridgeDto(5, new BridgeMaker(() -> 0), List.of("U", "U", "U", "U", "U"))
+                new BridgeDto(3, new BridgeMaker(() -> 1), List.of("U", "U", "U")),
+                new BridgeDto(6, new BridgeMaker(() -> 0), List.of("D", "D", "D", "D", "D", "D")),
+                new BridgeDto(10, new BridgeMaker(() -> 0), List.of("D", "D", "D", "D", "D", "D", "D", "D", "D", "D")),
+                new BridgeDto(5, new BridgeMaker(() -> 1), List.of("U", "U", "U", "U", "U"))
         );
     }
 }

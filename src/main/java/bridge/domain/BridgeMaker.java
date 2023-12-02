@@ -46,10 +46,10 @@ public class BridgeMaker {
 
     private String parseNumber(int positionNumber) {
         if (positionNumber == 0) {
-            return UP;
+            return DOWN;
         }
 
-        return DOWN;
+        return UP;
     }
 
 }
