@@ -45,6 +45,14 @@ public class Trace {
                 .allMatch(index -> bridge.isCorrectSpace(index, spaces.get(index)));
     }
 
+    public boolean isReachedEndCorrectly(Bridge bridge) {
+        return isSizeEqualTo(bridge.size()) && isCorrectRouteAt(bridge);
+    }
+
+    private boolean isSizeEqualTo(int size) {
+        return size == spaces.size();
+    }
+
     private boolean isSpacesFull() {
         return spaces.size() >= maxSize;
     }
