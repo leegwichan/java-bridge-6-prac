@@ -3,6 +3,7 @@ package bridge;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import bridge.domain.BridgeMaker;
 import bridge.exception.ErrorMessage;
 import java.util.List;
 import java.util.stream.Stream;

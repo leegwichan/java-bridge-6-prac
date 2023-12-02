@@ -1,5 +1,7 @@
 package bridge;
 
+import bridge.domain.BridgeGame;
+import bridge.domain.MoveHistory;
 import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
