@@ -81,6 +81,10 @@ public class BridgeGame {
         return topRow.append("\n").append(bottomRow).toString();
     }
 
+    public boolean isEnd() {
+        return round == bridge.size();
+    }
+
     public int getTrialCount() {
         return trialCount;
     }

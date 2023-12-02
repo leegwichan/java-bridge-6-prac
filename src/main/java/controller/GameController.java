@@ -1,0 +1,64 @@
+package controller;
+
+import bridge.BridgeRandomNumberGenerator;
+import bridge.domain.BridgeGame;
+import bridge.domain.BridgeMaker;
+import bridge.domain.MoveHistory;
+import bridge.dto.ResultDto;
+import bridge.exception.InputException;
+import bridge.view.InputView;
+import bridge.view.OutputView;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Supplier;
+
+public class GameController {
+    public void run() {
+        int bridgeSize = wrapByLoop(InputView::readBridgeSize);
+        BridgeGame bridgeGame = new BridgeGame(initBridge(bridgeSize), MoveHistory.from(new ArrayList<>()));
+        ResultDto resultDto = null;
+
+        resultDto = playGame(bridgeGame, resultDto);
+        if (resultDto == null) {
+            resultDto = new ResultDto(bridgeGame.getGameResult(), "성공", bridgeGame.getTrialCount());
+        }
+
+        OutputView.printResult(resultDto);
+    }
+
+    private ResultDto playGame(BridgeGame bridgeGame, ResultDto resultDto) {
+        while (!bridgeGame.isEnd()) {
+            String movePosition = wrapByLoop(InputView::readMoving);
+            boolean isMove = bridgeGame.move(movePosition);
+            String gameResult = bridgeGame.getGameResult();
+            OutputView.printMap(gameResult);
+
+            if (!isMove) {
+                String command = wrapByLoop(InputView::readGameCommand);
+                if (command.equals("R")) {
+                    bridgeGame.retry(command);
+                }
+                if (command.equals("Q")) {
+                    resultDto = new ResultDto(gameResult, "실패", bridgeGame.getTrialCount());
+                    break;
+                }
+            }
+        }
+        return resultDto;
+    }
+
+    private List<String> initBridge(int bridgeSize) {
+        BridgeMaker bridgeMaker = new BridgeMaker(new BridgeRandomNumberGenerator());
+        return bridgeMaker.makeBridge(bridgeSize);
+    }
+
+    private <T> T wrapByLoop(Supplier<T> supplier) {
+        while (true) {
+            try {
+                return supplier.get();
+            } catch (InputException exception) {
+                System.out.println(exception.getMessage());
+            }
+        }
+    }
+}

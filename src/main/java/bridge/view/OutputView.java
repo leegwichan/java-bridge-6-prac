@@ -17,6 +17,7 @@ public class OutputView {
      */
     public static void printMap(String data) {
         print(data);
+        print("");
     }
 
     /**
