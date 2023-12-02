@@ -7,6 +7,8 @@
 - [] 다리를 생성 - BridgeMaker#makeBridge()
     - [] 무작위 값을 사용해 건널 수 있는 칸 생성 - BridgeMaker#generateRoom()
     - [] 무작위 값을 생성 - BridgeMaker#generateNumber()
+- [] 플레이어가 이동 - BridgeGame#move()
+- [] 플레이어 게임 재시작 - BridgeGame#retry()
 
 ## 테스트 기능 목록
 
