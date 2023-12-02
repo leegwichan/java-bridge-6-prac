@@ -1,14 +1,12 @@
 package bridge.constant;
 
-public enum Room {
-    ROOM_UP("U"),
-    ROOM_DOWN("D"),
-    ROOM_EXIST("O"),
-    ROOM_EMPTY("X");
+public enum Game {
+    GAME_RETRY("retry"),
+    GAME_QUIT("quit");
 
     private String message;
 
-    Room(String message) {
+    Game(String message) {
         this.message = message;
     }
 
