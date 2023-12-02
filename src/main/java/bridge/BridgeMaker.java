@@ -12,12 +12,11 @@ public class BridgeMaker {
     private static final int MIN_SIZE = 3;
     private static final int MAX_SIZE = 20;
 
-    private static String UP = "U";
-    private static String DOWN = "D";
-    private static int UP_NUMBER = 1;
-    private static int DOWN_NUMBER = 0;
-
-    Map<Integer, String> NUMBER_TO_STRING = Map.of(UP_NUMBER, UP, DOWN_NUMBER, DOWN);
+    private static final String UP = "U";
+    private static final String DOWN = "D";
+    private static final int UP_NUMBER = 1;
+    private static final int DOWN_NUMBER = 0;
+    private static final Map<Integer, String> NUMBER_TO_STRING = Map.of(UP_NUMBER, UP, DOWN_NUMBER, DOWN);
 
 
     private final BridgeNumberGenerator bridgeNumberGenerator;
