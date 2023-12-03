@@ -60,7 +60,6 @@ public class InputView {
                 validateMove(move);
 
                 String currentBridge = bridges.get(moveCount);
-                System.out.println("현재 다리:" + currentBridge);
 
                 // 검증이 완료된 이동을 반복해야한다.
                 // 다리를 끝까지 건너거나, 재시도 문구에서 종료를 입력할 때까지
